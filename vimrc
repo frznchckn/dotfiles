@@ -1,22 +1,23 @@
 
 " Pathogen
 filetype off " Pathogen needs to run before plugin indent on
-call pathogen#incubate()
+"call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 filetype plugin indent on
 
 set nocompatible
 
 if has("win32") || has("win64")
-   set directory=$TMP
-   set backupdir=C:\temp\vimtmp,/tmp
+    set directory=$TMP
+    set backupdir=C:\temp\vimtmp,/tmp
 else
-   set directory=/tmp
+    set directory=/tmp
 end 
 
 
-"set autoindent
-"set smartindent
+set autoindent
+set smartindent
 set showmatch
 "colorscheme torte
 "colorscheme clarity
@@ -31,8 +32,8 @@ set number
 set ruler
 set nowrap
 augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-  autocmd BufEnter * match OverLength /\%81v.*/
+    autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+    autocmd BufEnter * match OverLength /\%81v.*/
 augroup END
 
 imap <M-a> <ESC>
@@ -43,9 +44,9 @@ map <M-x> <C-x>
 map <M-u> 80<C-w> |
 "set vb
 " Highly recommended to set tab keys to 4 spaces
-set tabstop=2
+set tabstop=4
 "set softtabstop=4
-set shiftwidth=2 expandtab
+set shiftwidth=4 expandtab
 "set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 "set guioptions-=r  "remove right-hand scroll bar

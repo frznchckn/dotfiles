@@ -34,6 +34,14 @@ then
   mv "$HOME/.vim" "$HOME/.bak/.vim-$now"
 fi
 
+if [ -d "$HOME/.gitconfig" ]
+then
+  echo "Backup up original .gitconfig";
+  mv "$HOME/.gitconfig" "$HOME/.bak/.gitconfig-$now"
+fi
+
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+
 echo ""
 
 echo "Create .vim directory and such"

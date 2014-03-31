@@ -1,0 +1,9 @@
+[user]
+    name = Russell L Friesenhahn
+[alias]
+    hist = "log --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %Creset%C(cyan)%s %C(magenta bold)(%ar) %C(green)<%an>%Creset' --all"
+[color "status"]
+    added = "green normal bold"
+    changed = "magenta normal bold"
+    untracked = "cyan normal"
+    deleted = "red normal bold"

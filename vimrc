@@ -36,17 +36,32 @@ augroup vimrc_autocmds
     autocmd BufEnter * match OverLength /\%81v.*/
 augroup END
 
-imap <M-a> <ESC>
-imap <C-n> <DOWN>
-imap <C-P> <UP>
-map <M-c> <C-c>
+let mapleader = ","
+
+inoremap <leader>a <ESC>
+inoremap jk <esc>
+inoremap <esc> <nop>
+inoremap <M-a> <ESC>
+
+inoremap <C-n> <DOWN>
+inoremap <C-P> <UP>
+"map <M-c> <C-c>
+map <leader>c <C-c>
+"noremap <localleader>c <C-c>
 map <M-x> <C-x>
 map <M-u> 80<C-w> |
+
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 "set vb
 " Highly recommended to set tab keys to 4 spaces
 set tabstop=4
 "set softtabstop=4
 set shiftwidth=4 expandtab
+set shiftround
 "set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 "set guioptions-=r  "remove right-hand scroll bar
@@ -63,6 +78,8 @@ let g:snippets_dir = '/home/rfriesen/.vim/bundle/snipmate.vim/snippets'
 "source $HOME/.vim/plugin/comments.vim
 "source $HOME/.vim/plugin/sessionman.vim
 "source $HOME/.vim/plugin/snipMate.vim
+
+autocmd BufNewFile,BufRead *.tex setlocal spell
 
 augroup filetypedetect
 au BufNewFile,BufRead *.sv      setf systemverilog

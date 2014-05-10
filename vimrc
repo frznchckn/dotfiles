@@ -39,18 +39,12 @@ augroup END
 let mapleader = ","
 
 inoremap <leader>a <ESC>
-inoremap jk <esc>
-inoremap <esc> <nop>
-inoremap <M-a> <ESC>
+inoremap jk <ESC>
 
 inoremap <C-n> <DOWN>
 inoremap <C-P> <UP>
-"map <M-c> <C-c>
 map <leader>c <C-c>
-"noremap <localleader>c <C-c>
-map <M-x> <C-x>
-map <M-u> 80<C-w> |
-
+map <leader>x <C-x>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>

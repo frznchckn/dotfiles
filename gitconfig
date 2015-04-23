@@ -1,5 +1,6 @@
 [user]
     name = Russell L Friesenhahn
+    email = frznchckn@gmail.com
 [alias]
     hist = "log --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %Creset%C(cyan)%s %C(magenta bold)(%ar) %C(green)<%an>%Creset' --all"
 [color "status"]

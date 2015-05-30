@@ -1,0 +1,6 @@
+#-----------------------------------------------
+#| Screen Configuration file
+#-----------------------------------------------
+
+# provide a useful location bar for the user
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"

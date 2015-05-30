@@ -1,11 +1,20 @@
 [user]
     name = Russell L Friesenhahn
-    email = frznchckn@gmail.com
 [alias]
-    h = "log --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %Creset%C(cyan)%s %C(magenta bold)(%ar) %C(green)<%an>%Creset'"
-    ha = "log --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %Creset%C(cyan)%s %C(magenta bold)(%ar) %C(green)<%an>%Creset' --all"
+    ha = "log --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %Creset%C(cyan)%s %C(magenta bold) %ai | %ar %C(green) %an %ae %Creset' --all"
+    h  = "log --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %Creset%C(cyan)%s %C(magenta bold) %ai | %ar %C(green) %an %ae %Creset'"
+    #h  = "log --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %<|(80)%Creset%C(cyan)%s %C(magenta bold) %ai | %<|(125)%ar %C(green) %an %ae %Creset'"
+    #hist2 = "log --decorate --graph --pretty=format:'%C(yellow bold)%h -%C(red bold)%d %Creset%C(cyan)%s %C(magenta bold)(%ar) %C(green)<%an>%Creset' --all"
 [color "status"]
     added = "green normal bold"
     changed = "magenta normal bold"
     untracked = "cyan normal"
     deleted = "red normal bold"
+[merge]
+    tool = meld
+[diff]
+    external = /home/rfriesen/bin/gitdiff.py
+[rerere]
+    enabled = true
+[push]
+    default = simple

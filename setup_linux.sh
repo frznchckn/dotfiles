@@ -1,9 +1,13 @@
 #!/bin/sh
 
-# save original .bashrc if exists
+set -e
 
-now=$(date +"%Y%m%d-%H%M")
+NOW=$(date +"%Y%m%d-%H%M")
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+DOTFILESs="bashrc vimrc gitconfig screenrc"
+
+# create backup directory for all originals
 if [ -e "$HOME/.bak" ]
 then
   echo "Backup directory already exists"
@@ -12,39 +16,26 @@ else
   mkdir "$HOME/.bak"
 fi
 
-if [ -e "$HOME/.bashrc" ]
-then
-  echo "Backing up original .bashrc";
-  mv "$HOME/.bashrc" "$HOME/.bak/.bashrc-$now"
-fi
+for file in $DOTFILESs; do
+    if [ -e "$HOME/.$file" ]
+    then
+        echo "Backing up original .$file";
+        mv "$HOME/.$file" "$HOME/.bak/.$file-$NOW"
+    fi
 
-ln -s ~/dotfiles/bashrc ~/.bashrc
+    ln -sf $DIR/$file ~/.$file
 
-if [ -e "$HOME/.vimrc" ]
-then
-  echo "Backing up original .vimrc";
-  mv "$HOME/.vimrc" "$HOME/.bak/.vimrc-$now"
-fi
+done
 
-ln -s ~/dotfiles/vimrc ~/.vimrc
-
+echo "Create .vim directory and such"
 if [ -d "$HOME/.vim" ]
 then
   echo "Backup up original .vim";
-  mv "$HOME/.vim" "$HOME/.bak/.vim-$now"
+  mv "$HOME/.vim" "$HOME/.bak/.vim-$NOW"
 fi
-
-if [ -d "$HOME/.gitconfig" ]
-then
-  echo "Backup up original .gitconfig";
-  mv "$HOME/.gitconfig" "$HOME/.bak/.gitconfig-$now"
-fi
-
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
 
 echo ""
 
-echo "Create .vim directory and such"
 mkdir -p "$HOME/.vim/autoload"
 mkdir "$HOME/.vim/bundle"
 echo "Git get of pathogen.vim"

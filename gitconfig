@@ -12,8 +12,6 @@
     deleted = "red normal bold"
 [merge]
     tool = meld
-[diff]
-    external = /home/rfriesen/bin/gitdiff.py
 [rerere]
     enabled = true
 [push]

@@ -5,7 +5,7 @@ set -e
 NOW=$(date +"%Y%m%d-%H%M")
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-DOTFILESs="bashrc vimrc gitconfig screenrc"
+DOTFILESs="bashrc vimrc gitconfig screenrc tkconrc"
 
 # create backup directory for all originals
 if [ -e "$HOME/.bak" ]

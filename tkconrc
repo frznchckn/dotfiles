@@ -1,0 +1,5 @@
+tkcon set ::tkcon::COLOR(bg) black
+tkcon set ::tkcon::COLOR(stdin) white
+tkcon set ::tkcon::COLOR(cursor) white
+tkcon set ::tkcon::OPT(font) "{Liberation Mono} 14"
+tkcon set ::tkcon::OPT(buffer) 20000

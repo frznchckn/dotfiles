@@ -69,21 +69,20 @@ end
 set autoindent
 set smartindent
 set showmatch
-"colorscheme torte
-"colorscheme clarity
-colorscheme asu1dark
+
+colorscheme vividchalk
 set guioptions-=l
 set guioptions-=r
 set guioptions-=b
 set incsearch
-"set guifont=Lucida_Typewriter:h9
+
 syntax on
 set number
 set ruler
 set nowrap
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-    autocmd BufEnter * match OverLength /\%81v.*/
+    "autocmd BufEnter * match OverLength /\%81v.*/
 augroup END
 
 let mapleader = ","
@@ -125,6 +124,5 @@ augroup END
 
 let g:snips_author = 'R. Friesenhahn'
 
-
-set guifont=Monospace\ 10
+set guifont=Monospace\ 14
 cd $HOME

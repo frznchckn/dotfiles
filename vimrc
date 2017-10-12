@@ -1,10 +1,60 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Pathogen
-filetype off " Pathogen needs to run before plugin indent on
-"call pathogen#incubate()
-call pathogen#infect('bundle/{}')
-call pathogen#helptags() " generate helptags for everything in 'runtimepath'
-filetype plugin indent on
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+let git_url = 'git@gitlab.com'
+let git_usr = 'frznchckn'
+let git_repo_root = git_url.':'.git_usr
+
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+Plugin git_repo_root.'/Vundle.vim'
+" " Keep Plugin commands between vundle#begin/end.
+Plugin git_repo_root.'/comments.vim'
+Plugin git_repo_root.'/Colour-Sampler-Pack'
+Plugin git_repo_root.'/jedi-vim'
+Plugin git_repo_root.'/ScrollColors'
+Plugin git_repo_root.'/supertab'
+" Track the engine.
+Plugin git_repo_root.'/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+" " plugin from http://vim-scripts.org/vim/scripts.html
+Plugin git_repo_root.'/vim-snippets'
+"
+" Plugin 'tpope/vim-fugitive'
+"Plugin 'roxma/nvim-completion-manager'
+" Plugin 'L9'
+" " All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" UltiSnips completion function that tries to expand a snippet. If there's no
+" snippet for expanding, it checks for completion window and if it's
+" shown, selects first element. If there's no completion window it tries to
+" jump to next placeholder. If there's no placeholder it just returns TAB key 
+function! g:UltiSnips_Complete()
+    call UltiSnips_ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips_JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
 
 set nocompatible
 
@@ -19,21 +69,20 @@ end
 set autoindent
 set smartindent
 set showmatch
-"colorscheme torte
-"colorscheme clarity
-colorscheme asu1dark
+
+colorscheme vividchalk
 set guioptions-=l
 set guioptions-=r
 set guioptions-=b
 set incsearch
-"set guifont=Lucida_Typewriter:h9
+
 syntax on
 set number
 set ruler
 set nowrap
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-    autocmd BufEnter * match OverLength /\%81v.*/
+    "autocmd BufEnter * match OverLength /\%81v.*/
 augroup END
 
 let mapleader = ","
@@ -66,12 +115,6 @@ set guioptions+=m
 ":filetype plugin on
 
 let g:snippets_dir = '/home/rfriesen/.vim/bundle/snipmate.vim/snippets'
-"source $HOME/vimfiles/plugin/comments.vim
-"source $HOME/vimfiles/plugin/sessionman.vim
-"source $HOME/vimfiles/plugin/snipMate.vim
-"source $HOME/.vim/plugin/comments.vim
-"source $HOME/.vim/plugin/sessionman.vim
-"source $HOME/.vim/plugin/snipMate.vim
 
 autocmd BufNewFile,BufRead *.tex setlocal spell
 
@@ -79,19 +122,7 @@ augroup filetypedetect
 au BufNewFile,BufRead *.sv      setf systemverilog
 augroup END 
 
-"source $HOME/vim-addons/plugin/comp.vim 
-     " fun ActivateAddons()
-      "    set runtimepath+=~/vim-addons/vim-addon-manager
-       "   try
-        "    call scriptmanager#Activate([])
-         " catch /.*/
-          "  echoe v:exception
-         " endtry
-        "endf
-        "call ActivateAddons()
-"call scriptmanager#Install(["vimcompcrtr"])
 let g:snips_author = 'R. Friesenhahn'
 
-
-set guifont=Monospace\ 10
+set guifont=Monospace\ 14
 cd $HOME
